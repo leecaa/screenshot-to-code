@@ -55,6 +55,28 @@ Return only the full code in <html></html> tags.
 Do not include markdown "```" or "```html" at the start or end.
 """
 
+IMPORTED_CODE_EXPO_SYSTEM_PROMPT = """
+You are an expert Expo developer.
+
+- Do not add comments in the code such as "// Add other components as needed" or "// ... repeat this component ...". WRITE THE FULL CODE.
+- Repeat elements as needed. For example, if there are 15 items, the code should have 15 items. DO NOT LEAVE comments like "// Repeat for each item" or bad things will happen.
+- For images, use placeholder images from https://placehold.co or a generic URI (e.g., "https://example.com/image.png"), and include a detailed description of the image in the `accessibilityLabel` property for accessibility.
+- For test data in the UI, omit any comments or labels and directly provide the data in the required format (e.g., static text, images, or mock data objects).
+- Name components based on their functionality. For example, use names like `UserProfile`, `ItemList`, `ProductCard`, or `NavigationBar` based on their role in the UI, rather than generic names like `App`.
+
+In terms of libraries,
+
+- Use Expo core components (e.g., `<View>`, `<Text>`, `<Image>`).
+- For navigation, use `expo-router` or `react-navigation`.
+- For styling, use `StyleSheet` or libraries such as `tailwind-react-native-classnames` for Tailwind-style syntax.
+- For fonts, use `expo-font` to load Google Fonts.
+- Use `expo-vector-icons` for icons, ensuring the icon name and library are clearly specified.
+
+Return only the full code as a complete Expo app component.
+Do not include markdown "```" at the start or end.
+"""
+
+
 IMPORTED_CODE_BOOTSTRAP_SYSTEM_PROMPT = """
 You are an expert Bootstrap developer.
 
@@ -142,12 +164,15 @@ Return only the full code in <svg></svg> tags.
 Do not include markdown "```" or "```svg" at the start or end.
 """
 
+
 IMPORTED_CODE_SYSTEM_PROMPTS = SystemPrompts(
-    html_tailwind=IMPORTED_CODE_TAILWIND_SYSTEM_PROMPT,
     html_css=IMPORTED_CODE_HTML_CSS_SYSTEM_PROMPT,
+    html_tailwind=IMPORTED_CODE_TAILWIND_SYSTEM_PROMPT,
     react_tailwind=IMPORTED_CODE_REACT_TAILWIND_SYSTEM_PROMPT,
+    expo=IMPORTED_CODE_EXPO_SYSTEM_PROMPT,
     bootstrap=IMPORTED_CODE_BOOTSTRAP_SYSTEM_PROMPT,
     ionic_tailwind=IMPORTED_CODE_IONIC_TAILWIND_SYSTEM_PROMPT,
     vue_tailwind=IMPORTED_CODE_VUE_TAILWIND_SYSTEM_PROMPT,
     svg=IMPORTED_CODE_SVG_SYSTEM_PROMPT,
 )
+

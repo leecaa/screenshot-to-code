@@ -40,7 +40,7 @@ router = APIRouter()
 def auto_upgrade_model(code_generation_model: Llm) -> Llm:
     if code_generation_model in {Llm.GPT_4_VISION, Llm.GPT_4_TURBO_2024_04_09}:
         print(
-            f"Initial deprecated model: {code_generation_model}. Auto-updating code generation model to GPT-4O-2024-05-13"
+            f"Initial deprecated model: {code_generation_model}. Auto-updating code generation model to gpt-4o-mini"
         )
         return Llm.GPT_4O_2024_05_13
     elif code_generation_model == Llm.CLAUDE_3_SONNET:

@@ -99,6 +99,7 @@ def assemble_prompt(
     stack: Stack,
     result_image_data_url: Union[str, None] = None,
 ) -> list[ChatCompletionMessageParam]:
+    print('zwt ====>' + stack)
     system_content = SYSTEM_PROMPTS[stack]
     user_prompt = USER_PROMPT if stack != "svg" else SVG_USER_PROMPT
 
